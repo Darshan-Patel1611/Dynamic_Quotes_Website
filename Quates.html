@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./Assets/logo-quetes.png" type="image/x-icon">
+
+    <!-- font icon cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts1 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts2 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+
+    <!-- AOS plugin -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <title>Dynamic Quates WebSite</title>
+</head>
+
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v17.0"
+    nonce="vmBUlH2d"></script>
+
+<body>
+
+    <div class="inner-box">
+        <div class="quotes-box" data-aos="fade-up" data-aos-duration="2000">
+            <i class="twitter fa-brands fa-twitter"></i>
+            <i class="comma fa-solid fa-quote-left"></i>
+            <div class="text" id="text"></div>
+            <div class="author" id="author"></div>
+            <button class="btn" id="btn">Next Quates</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        let btn = document.getElementById('btn');
+        let postnow = document.getElementById("twitter");
+
+        let getdata = async () => {
+      
+            let api = "https://type.fit/api/quotes";
+            try {
+                let data = await fetch(api);
+                let res = await data.json();
+
+                let random = Math.floor(Math.random() * 1642);
+
+                let rdm_num = res[random];
+
+                let text = document.getElementById('text');
+                let author = document.getElementById('author');
+
+                if (rdm_num.author == null) {
+                    text.innerText = rdm_num.text;
+                    author.innerText = `~Unknown`;
+                } else {
+                    text.innerText = rdm_num.text;
+                    author.innerText = `~${rdm_num.author}`;
+                }
+
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+
+        getdata();
+        btn.addEventListener("click", getdata);
+    </script>
+</body>
+
+</html>

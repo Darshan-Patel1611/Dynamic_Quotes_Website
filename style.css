@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --quate-text: 'Dancing Script', cursive;
+    --author-text: 'Inter', sans-serif;
+    --white:#ffff;
+    --body-bg-color:rgb(32, 41, 47);
+    --btn-color:rgb(5, 108, 197);
+}
+
+body {
+    background-color: var(--body-bg-color);
+}
+
+.inner-box {
+    width: 75vw;
+    height: 60vh;
+    margin: auto;
+    background-color: rgb(48, 154, 241);
+    margin-top: 25vh;
+    border-radius: 3px;
+}
+
+.quotes-box {
+    width: 50vw;
+    height: 40vh;
+    padding: 10px;
+    background: var(--white);
+    font-family: var(--quate-text);
+    font-size: x-large;
+    z-index: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    top: 17%;
+    right: -17%;
+    border-radius: 3px;
+    box-shadow: 0px 0px 35px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+
+#author {
+    font-family: var(--author-text);
+    font-size: small;
+    text-align: right;
+    position: fixed;
+    top: 70%;
+    left: 70%;
+}
+
+.twitter {
+    color: rgb(15, 90, 211);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    animation: twitter 3s infinite ease-in;
+}
+
+@keyframes twitter {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+
+    }
+}
+
+.comma {
+    position: absolute;
+    left: 10px;
+    top: 40px;
+    opacity: 0.3;
+    font-size: 40px;
+}
+
+.btn {
+    width: 50vw;
+    height: 30px;
+    color: var(--white);
+    background-color: var(--btn-color);
+    border: none;
+    position: fixed;
+    bottom: 0%;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+
+@media screen and (max-width:900px) {
+    #text {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .comma {
+        font-size: 30px;
+    }
+
+    #author {
+        right: 50px;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    #text {
+        margin-top: 25px;
+        font-size: 1.5rem;
+    }
+
+    #author {
+        font-size: 0.8rem;
+        top: 80%;
+        left: 45%;
+    }
+
+    .twitter {
+        font-size: 1.3rem;
+    }
+
+}
+
+@media screen and (max-width:640px) {
+    #text {
+        margin-top: 0px;
+        font-size: 1.3rem;
+    }
+
+    #author {
+        font-size: 0.7rem;
+
+    }
+
+    .comma {
+        font-size: 1.5rem;
+    }
+
+    .twitter {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .comma {
+        opacity: 0;
+    }
+}
